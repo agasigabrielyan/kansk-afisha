@@ -1,0 +1,24 @@
+.works{
+	transition:all 750ms;
+	-webkit-transition:all 750ms;
+	-moz-transition:all 750ms;
+}
+
+.works img{
+	position:relative;
+	transition:all 750ms;
+	-webkit-transition:all 750ms;
+	-moz-transition:all 750ms;
+}
+
+a.works_on_page{
+	height:350px;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	overflow:hidden;
+}
+
+a.works_on_page:hover{
+	border:1px solid #ccc;
+}

@@ -1,0 +1,1 @@
+Техподдержка: <a href="https://dev-consult.ru/" target="_blank">dev-consult.ru</a>
