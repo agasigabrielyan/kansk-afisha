@@ -68,15 +68,37 @@
                     </button>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav">
-						<li style='color:#fff; font-weight:bold;' class="<?=$APPLICATION->GetCurPage(false)=='/'?'active':''?>"><a class="navigation_link" href="/">Главная</a></li>
-                        <li style='color:#fff; font-weight:bold;' class="<?=$APPLICATION->GetCurPage(false)=='/razmeshchenie-reklamy/'?'active':''?>"><a class="navigation_link" href="/razmeshchenie-reklamy/">Размещение рекламы</a></li>
-                        <li style='color:#fff; font-weight:bold;' class="<?=$APPLICATION->GetCurPage(false)=='/naruzhnaya-reklama/'?'active':''?>"><a class="navigation_link" href="/naruzhnaya-reklama/">Наружная реклама</a></li>
-                        <li style='color:#fff; font-weight:bold;' class="<?=$APPLICATION->GetCurPage(false)=='/sotrudnichestvo/'?'active':''?>"><a class="navigation_link" href="/sotrudnichestvo/">Сотрудничество</a></li>
-                        <li style='color:#fff; font-weight:bold;' class="<?=$APPLICATION->GetCurPage(false)=='/#map'?'active':''?>"><a class="navigation_link" href="/#map">Карта</a></li>
-                        <li style='color:#fff; font-weight:bold;' class="<?=$APPLICATION->GetCurPage(false)=='/#map'?'active':''?>"><a class="navigation_link" href="/lazernoe-vyzhiganie-po-derevu/">Лазерное выжигание по дереву</a></li>
-                        <li style='color:#fff; font-weight:bold;' class="<?=$APPLICATION->GetCurPage(false)=='/kontakty/'?'active':''?>"><a class="navigation_link" href="/kontakty/">Контакты</a></li>
-                    </ul>
+                    <?php if( \Bitrix\Main\Engine\CurrentUser::get()->isAdmin() ): ?>
+                        <?php
+                            $APPLICATION->IncludeComponent(
+                            "bitrix:menu",
+                            "kanskafishamenu",
+                            Array(
+                                "ALLOW_MULTI_SELECT" => "N",
+                                "CHILD_MENU_TYPE" => "left",
+                                "COMPOSITE_FRAME_MODE" => "A",
+                                "COMPOSITE_FRAME_TYPE" => "AUTO",
+                                "DELAY" => "N",
+                                "MAX_LEVEL" => "1",
+                                "MENU_CACHE_GET_VARS" => array(""),
+                                "MENU_CACHE_TIME" => "3600",
+                                "MENU_CACHE_TYPE" => "N",
+                                "MENU_CACHE_USE_GROUPS" => "Y",
+                                "ROOT_MENU_TYPE" => "top",
+                                "USE_EXT" => "N"
+                            )
+                        );?>
+                    <?php else: ?>
+                        <ul class="nav navbar-nav">
+                            <li style='color:#fff; font-weight:bold;' class="<?=$APPLICATION->GetCurPage(false)=='/'?'active':''?>"><a class="navigation_link" href="/">Главная</a></li>
+                            <li style='color:#fff; font-weight:bold;' class="<?=$APPLICATION->GetCurPage(false)=='/razmeshchenie-reklamy/'?'active':''?>"><a class="navigation_link" href="/razmeshchenie-reklamy/">Размещение рекламы</a></li>
+                            <li style='color:#fff; font-weight:bold;' class="<?=$APPLICATION->GetCurPage(false)=='/naruzhnaya-reklama/'?'active':''?>"><a class="navigation_link" href="/naruzhnaya-reklama/">Наружная реклама</a></li>
+                            <li style='color:#fff; font-weight:bold;' class="<?=$APPLICATION->GetCurPage(false)=='/sotrudnichestvo/'?'active':''?>"><a class="navigation_link" href="/sotrudnichestvo/">Сотрудничество</a></li>
+                            <li style='color:#fff; font-weight:bold;' class="<?=$APPLICATION->GetCurPage(false)=='/#map'?'active':''?>"><a class="navigation_link" href="/#map">Карта</a></li>
+                            <li style='color:#fff; font-weight:bold;' class="<?=$APPLICATION->GetCurPage(false)=='/#map'?'active':''?>"><a class="navigation_link" href="/lazernoe-vyzhiganie-po-derevu/">Лазерное выжигание по дереву</a></li>
+                            <li style='color:#fff; font-weight:bold;' class="<?=$APPLICATION->GetCurPage(false)=='/kontakty/'?'active':''?>"><a class="navigation_link" href="/kontakty/">Контакты</a></li>
+                        </ul>
+                    <?php endif; ?>
                 </div>
             </div>
         </nav>
