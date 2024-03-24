@@ -11,7 +11,7 @@ $APPLICATION->SetTitle("Каталог");?><?$APPLICATION->IncludeComponent(
 		"AJAX_MODE" => "Y",
 		"AJAX_OPTION_ADDITIONAL" => "",
 		"AJAX_OPTION_HISTORY" => "Y",
-		"AJAX_OPTION_JUMP" => "Y",
+		"AJAX_OPTION_JUMP" => "N",
 		"AJAX_OPTION_STYLE" => "Y",
 		"BASKET_URL" => "/personal/basket.php",
 		"CACHE_FILTER" => "N",
