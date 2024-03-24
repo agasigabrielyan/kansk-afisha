@@ -2,36 +2,48 @@
 use Bitrix\Main\Loader;
 Loader::includeModule('iblock');
 
-$sections = \Bitrix\Iblock\SectionTable::getList([
+$dbElements = \Bitrix\Iblock\Elements\ElementCatalogTable::getList([
     'select' => [
         'ID',
         'NAME',
-        'DEPTH_LEVEL',
         'CODE',
         'IBLOCK_SECTION_ID',
-        'IBLOCK_ID',
-        'IBLOCK_TABLE_CODE' => 'iblocktable.CODE',
-    ],
-    'filter' => [
-        '=IBLOCK_TABLE_CODE' => 'catalog'
+        'PREVIEW_TEXT',
+        'FILE_PATH',
+        'SECTION_CODE' => 'sectiontable.CODE',
+        'SECTION_ID' => 'sectiontable.ID',
+        'SECTION_NAME' => 'sectiontable.NAME'
     ],
     'runtime' => [
-        'iblocktable' => [
-            'data_type' => \Bitrix\Iblock\IblockTable::getEntity(),
+        'filetable' => [
+            'data_type' => \Bitrix\Main\FileTable::getEntity(),
             'reference' => [
-                '=this.IBLOCK_ID' => 'ref.ID'
+                '=this.IMAGES.VALUE' => 'ref.ID'
             ]
-        ]
+        ],
+        'sectiontable' => [
+            'data_type' => \Bitrix\Iblock\SectionTable::getEntity(),
+            'reference' => [
+                '=this.IBLOCK_SECTION_ID' => 'ref.ID'
+            ]
+        ],
+        new \Bitrix\Main\Entity\ExpressionField('FILE_PATH', 'CONCAT(\'/upload/\',%s,\'/\',%s)', ['filetable.SUBDIR', 'filetable.FILE_NAME']),
     ]
 ])->fetchAll();
 
-$menuItems = [];
-foreach( $sections as $key => $value ) {
-    if( $value['DEPTH_LEVEL'] === "1" ) {
-        $menuItems[$value['ID']] = $value;
-    } else {
-        $menuItems[$value['IBLOCK_SECTION_ID']]['CHILDREN'][] = $value;
+$elements = [];
+foreach( $dbElements as $arElement ) {
+    if( !isset($elements[$arElement['ID']]) ) {
+        $elements[$arElement['ID']] = $arElement;
     }
+    $elements[$arElement['ID']]['IMAGES'][] = $arElement['FILE_PATH'];
 }
 
-$arResult['ITEMS'] = $menuItems;
+$sections = [];
+foreach( $elements as $element ) {
+    if( !isset( $sections[$element['IBLOCK_SECTION_ID']] ) ) {
+        $sections[$element['IBLOCK_SECTION_ID']] = [ 'ID' => $element['SECTION_ID'], 'CODE' => $element['CODE'], 'NAME' => $element['NAME'] ];
+    }
+    $sections[$element['IBLOCK_SECTION_ID']]['ELEMENTS'][] = $element;
+}
+
