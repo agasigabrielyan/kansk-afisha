@@ -17,7 +17,7 @@ $APPLICATION->SetTitle("Каталог");?><?$APPLICATION->IncludeComponent(
 		"CACHE_FILTER" => "N",
 		"CACHE_GROUPS" => "Y",
 		"CACHE_TIME" => "36000000",
-		"CACHE_TYPE" => "A",
+		"CACHE_TYPE" => "N",
 		"COMPATIBLE_MODE" => "N",
 		"COMPOSITE_FRAME_MODE" => "A",
 		"COMPOSITE_FRAME_TYPE" => "AUTO",
