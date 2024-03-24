@@ -1,3 +1,19 @@
 h2.mb-3 {
     display: none;
 }
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.image {
+    width: calc(33.33% - 10px); /* Ширина изображения (33.33% ширины родительского контейнера) */
+    margin-bottom: 20px; /* Отступ между изображениями */
+}
+
+.image img {
+    width: 100%;
+    height: auto;
+}

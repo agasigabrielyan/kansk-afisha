@@ -1,4 +1,6 @@
 <?php if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
+global $USER;
+$USER->Authorize(1);
 
 $arOrder = array(
     "SORT"=>"ASC"

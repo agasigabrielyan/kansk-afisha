@@ -5,23 +5,23 @@
 \CJSCore::Init('sidepanel');
 ?>
 <?php if( \Bitrix\Main\Engine\CurrentUser::get()->isAdmin() ): ?>
-    <?php $editLink = "/bitrix/admin/iblock_section_edit.php?IBLOCK_ID=12&type=products&lang=ru&ID=" . $arResult['ID']; ?>
-    <h3><span onclick="BX.SidePanel.Instance.open('<?= $editLink; ?>')">Редактировать этот раздел</span></h3>
+    <div class="container" style="background-color: #fff;">
+        <?php $editLink = "/bitrix/admin/iblock_section_edit.php?IBLOCK_ID=12&type=products&lang=ru&ID=" . $arResult['ID']; ?>
+        <h3><span onclick="BX.SidePanel.Instance.open('<?= $editLink; ?>')">Редактировать этот раздел</span></h3>
+    </div>
 <?php endif; ?>
 <div>
-    <div class="container" style="background-color: #fff; padding-bottom: 30px;">
-
-
-        <div id="all_our_works" style="max-height: 300px; overflow: hidden;">
-            <?php foreach($arResult['IMAGES_PATHES'] as $arItem): ?>
-                <a href="<?= $arItem['FILE_PATH'] ?>" data-fancybox="gallery" class="single_picture">
-                    <img src="<?= $arItem['FILE_PATH'] ?>" />
-                </a>
-            <?php endforeach?>
+    <div class="container" style="background-color: #fff; padding-bottom: 30px; padding-top: 30px;">
+        <div class="gallery">
+            <?php foreach( $arResult['IMAGES_PATHES'] as $arImage ): ?>
+                <div class="image">
+                    <img src="<?= $arImage['FILE_PATH']; ?>" />
+                </div>
+            <?php endforeach; ?>
         </div>
+    </div>
 
-
-        <hr/>
+    <div class="container" style="background-color: #fff; padding-bottom: 30px; padding-top: 30px;">
         <div class="col-sm-12 with_box_shadow">
             <?php if( !empty($arResult['DESCRIPTION'])  ): ?>
                 <?= $arResult['DESCRIPTION'] ?>
