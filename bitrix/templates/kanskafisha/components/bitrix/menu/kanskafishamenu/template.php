@@ -3,7 +3,6 @@
  * @var $arResult
  */
 ?>
-<h2>Игнор</h2>
 <nav>
     <ul class="nav navbar-nav">
         <?php foreach( $arResult['ITEMS'] as $arItem ): ?>
@@ -20,3 +19,4 @@
         <?php endforeach; ?>
     </ul>
 </nav>
+afsdsadasdf
