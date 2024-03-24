@@ -8,6 +8,7 @@ nav ul li {
 	display: inline-block;
 	position: relative;
 	background-color: #80006f;
+	min-width: 120px;
 }
 
 nav ul li a {
@@ -34,10 +35,14 @@ nav ul li:hover ul {
 
 nav ul li ul li {
 	display: block;
+	width: 100%;
 }
 
 nav ul li ul li a {
 	padding: 8px 15px;
+	width: 100%; /* Расширяем ссылки внутри выпадающего меню на всю ширину */
+	box-sizing: border-box; /* Учитываем отступы */
+	display: block;
 }
 
 nav ul li ul li a:hover {
