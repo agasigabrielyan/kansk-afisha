@@ -9,13 +9,13 @@
     <h3><span onclick="BX.SidePanel.Instance.open('<?= $editLink; ?>')">Редактировать этот раздел</span></h3>
 <?php endif; ?>
 <div>
-    <div class="container" style="background-color: #fff;">
+    <div class="container" style="background-color: #fff; padding-bottom: 30px;">
 
 
         <div id="all_our_works" style="max-height: 300px; overflow: hidden;">
-            <?php foreach($arResult['DISPLAY_PROPERTIES']['PICTURES']['VALUE'] as $arItem): ?>
-                <a href="<?= CFile::GetPath($arItem); ?>" data-fancybox="gallery" class="single_picture">
-                    <img src="<?=CFile::GetPath($arItem);?>" />
+            <?php foreach($arResult['IMAGES_PATHES'] as $arItem): ?>
+                <a href="<?= $arItem['FILE_PATH'] ?>" data-fancybox="gallery" class="single_picture">
+                    <img src="<?= $arItem['FILE_PATH'] ?>" />
                 </a>
             <?php endforeach?>
         </div>

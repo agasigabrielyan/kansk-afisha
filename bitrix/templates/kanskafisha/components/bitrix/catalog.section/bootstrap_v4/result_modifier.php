@@ -23,4 +23,4 @@ $imagesPathes = \Bitrix\Main\FileTable::getList([
     ]
 ])->fetchAll();
 
-$some = "";
+$arResult['IMAGES_PATHES'] = $imagesPathes;
