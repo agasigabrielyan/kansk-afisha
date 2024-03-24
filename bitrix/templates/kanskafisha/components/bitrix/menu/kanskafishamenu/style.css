@@ -26,11 +26,13 @@ nav ul li ul {
 	left: 0;
 	background-color: #fff;
 	padding: 0;
+	width: 100%;
 }
 
 nav ul li:hover ul {
 	display: block;
 	z-index: 999!important;
+	width: 100%;
 }
 
 nav ul li ul li {

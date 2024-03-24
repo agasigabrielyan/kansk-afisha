@@ -42,8 +42,10 @@ foreach( $dbElements as $arElement ) {
 $sections = [];
 foreach( $elements as $element ) {
     if( !isset( $sections[$element['IBLOCK_SECTION_ID']] ) ) {
-        $sections[$element['IBLOCK_SECTION_ID']] = [ 'ID' => $element['SECTION_ID'], 'CODE' => $element['CODE'], 'NAME' => $element['NAME'] ];
+        $sections[$element['IBLOCK_SECTION_ID']] = [ 'ID' => $element['SECTION_ID'], 'CODE' => $element['SECTION_CODE'], 'NAME' => $element['SECTION_NAME'] ];
     }
     $sections[$element['IBLOCK_SECTION_ID']]['ELEMENTS'][] = $element;
 }
+
+$arResult['ITEMS'] = $sections;
 

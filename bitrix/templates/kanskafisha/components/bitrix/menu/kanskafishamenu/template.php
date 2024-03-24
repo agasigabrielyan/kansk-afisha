@@ -5,13 +5,13 @@
 ?>
 <nav>
     <ul class="nav navbar-nav">
-        <?php foreach( $arResult['ITEMS'] as $arItem ): ?>
+        <?php foreach( $arResult['ITEMS'] as $arSection ): ?>
             <li style='color:#fff; font-weight:bold;'>
-                <a class="navigation_link" href="/katalog/<?= $arItem['CODE']; ?>/"><?= $arItem['NAME']; ?></a>
-                <?php if( is_array($arItem['CHILDREN']) && count($arItem['CHILDREN'])>0 ): ?>
+                <a class="navigation_link"><?= $arSection['NAME']; ?></a>
+                <?php if( is_array($arSection['ELEMENTS']) && count($arSection['ELEMENTS'])>0 ): ?>
                     <ul>
-                        <?php foreach( $arItem['CHILDREN'] as $arChild ): ?>
-                            <li><a href="/katalog/<?= $arItem['CODE'] ?>/<?= $arChild['CODE'] ?>/"><?= $arChild['NAME'] ?></a></li>
+                        <?php foreach( $arSection['ELEMENTS'] as $arChild ): ?>
+                            <li><a href="/katalog/<?= $arSection['CODE'] ?>/<?= $arChild['CODE'] ?>/"><?= $arChild['NAME'] ?></a></li>
                         <?php endforeach; ?>
                     </ul>
                 <?php endif; ?>
