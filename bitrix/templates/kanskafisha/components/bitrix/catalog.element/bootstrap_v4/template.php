@@ -4,7 +4,6 @@
  */
 \CJSCore::Init('sidepanel');
 ?>
-
 <div class="container">
     <div class="row">
         <div class="col-sm-12 with_box_shadow" id="all_our_works" style="max-height: 300px; overflow: hidden;">
@@ -16,13 +15,11 @@
         </div>
     </div>
 </div>
-
 <div class="container" style="padding: 30px 15px">
     <?php if( !empty($arResult['PREVIEW_TEXT']) ): ?>
         <?= $arResult['PREVIEW_TEXT']; ?>
     <?php endif; ?>
 </div>
-
 <?php if(\Bitrix\Main\Engine\CurrentUser::get()->isAdmin()): ?>
     <div class="container" style="padding: 30px 15px;">
         <?php
