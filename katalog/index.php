@@ -1,5 +1,11 @@
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Каталог");?><?$APPLICATION->IncludeComponent(
+$APPLICATION->SetTitle("Каталог");
+$currentPage = \Bitrix\Main\Application::getInstance()->getContext()->getRequest()->getRequestUri();
+if( $currentPage === "/katalog/" ) {
+    LocalRedirect('/katalog/reklama/pechat-bannera/', true );
+}
+?>
+<?$APPLICATION->IncludeComponent(
 	"bitrix:catalog", 
 	"bootstrap_v5", 
 	array(
@@ -188,4 +194,5 @@ $APPLICATION->SetTitle("Каталог");?><?$APPLICATION->IncludeComponent(
 		)
 	),
 	false
-);?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+);?>
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
